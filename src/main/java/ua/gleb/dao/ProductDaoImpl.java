@@ -1,26 +1,18 @@
-package dao;
+package ua.gleb.dao;
 
-import model.Product;
+import ua.gleb.model.Product;
 import org.mongodb.morphia.Datastore;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
-import util.MongoDBConnection;
-
-/**
- * Created by gleb on 12.07.15.
- */
 
 @Component
 public class ProductDaoImpl implements IProductDao {
 
-    final private Datastore datastore;
-
     @Autowired
+    private Datastore datastore;
+
     public ProductDaoImpl() {
-        ApplicationContext context = new AnnotationConfigApplicationContext(MongoDBConnection.class);
-        datastore = context.getBean(Datastore.class);
+
     }
 
     @Override
@@ -43,4 +35,7 @@ public class ProductDaoImpl implements IProductDao {
 
     }
 
+    public void setDatastore(Datastore datastore) {
+        this.datastore = datastore;
+    }
 }

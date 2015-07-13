@@ -1,6 +1,6 @@
-package dao;
+package ua.gleb.dao;
 
-import model.Product;
+import ua.gleb.model.Product;
 
 /**
  * Created by gleb on 12.07.15.
