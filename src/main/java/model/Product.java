@@ -15,15 +15,15 @@ public class Product {
     @Id
     private ObjectId id;
 
-    private String title;
+    private final String title;
 
-    private double price;
+    private final double price;
 
-    private String description;
+    private final String description;
 
-    private List<String> listOfSize;
+    private final List<String> listOfSize;
 
-    private List<String> listOfImageURLs;
+    private final List<String> listOfImageURLs;
 
     public Product(String title, double price, String description, List<String> listOfSize, List<String> listOfImageURLs) {
         this.title = title;
