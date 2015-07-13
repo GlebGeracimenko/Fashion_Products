@@ -1,11 +1,12 @@
-import dao.ProductDaoImpl;
-import model.Product;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.parser.Parser;
 import org.jsoup.select.Elements;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import ua.gleb.dao.IProductDao;
+import ua.gleb.dao.ProductDaoImpl;
+import ua.gleb.model.Product;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,8 +17,9 @@ import java.util.List;
  */
 public class SavingProducts {
 
-    @Autowired
-    private static ProductDaoImpl productDao = new ProductDaoImpl();
+    private static final ApplicationContext context = new AnnotationConfigApplicationContext("ua.gleb");
+    private static IProductDao productDao = context.getBean(ProductDaoImpl.class);
+    private static int count = 0;
 
     public static void saveProducts(List<String> links) {
         for (String link : links) {
@@ -37,7 +39,7 @@ public class SavingProducts {
 
             productDao.save(new Product(title.text(), Double.parseDouble(price.text().substring(1, price.text().length())),
                     description.text(), sizeHelper(allStockSize), imagesHelper(image)));
-
+            System.out.println(++count);
         }
     }
 

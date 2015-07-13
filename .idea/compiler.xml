@@ -25,5 +25,8 @@
         <module name="FashionProduct" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="FashionProduct" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

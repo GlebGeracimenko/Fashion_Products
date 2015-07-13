@@ -1,5 +1,7 @@
-/home/serhii/IdeaProjects/Fashion_Products/src/main/java/util/MongoDBConnection.java
-/home/serhii/IdeaProjects/Fashion_Products/src/main/java/model/Product.java
-/home/serhii/IdeaProjects/Fashion_Products/src/main/java/dao/ProductDaoImpl.java
-/home/serhii/IdeaProjects/Fashion_Products/src/main/java/dao/IProductDao.java
-/home/serhii/IdeaProjects/Fashion_Products/src/main/java/Test.java
+/media/gleb/10585F7C585F5F90/Fashion_Products/src/main/java/ua/gleb/dao/IProductDao.java
+/media/gleb/10585F7C585F5F90/Fashion_Products/src/main/java/ua/gleb/dao/ProductDaoImpl.java
+/media/gleb/10585F7C585F5F90/Fashion_Products/src/main/java/ua/gleb/parser/URLParser.java
+/media/gleb/10585F7C585F5F90/Fashion_Products/src/main/java/SavingProducts.java
+/media/gleb/10585F7C585F5F90/Fashion_Products/src/main/java/ua/gleb/util/ContextSpringConfig.java
+/media/gleb/10585F7C585F5F90/Fashion_Products/src/main/java/ua/gleb/model/Product.java
+/media/gleb/10585F7C585F5F90/Fashion_Products/src/main/java/Test.java

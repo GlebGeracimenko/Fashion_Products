@@ -1,0 +1,7 @@
+SavingProducts.class
+ua/gleb/parser/URLParser.class
+ua/gleb/dao/ProductDaoImpl.class
+ua/gleb/model/Product.class
+Test.class
+ua/gleb/dao/IProductDao.class
+ua/gleb/util/ContextSpringConfig.class
