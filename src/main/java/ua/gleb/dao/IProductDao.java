@@ -9,10 +9,4 @@ public interface IProductDao {
 
     void save(Product product);
 
-    void update(Product product);
-
-    void delete(Product product);
-
-    void find(String title);
-
 }

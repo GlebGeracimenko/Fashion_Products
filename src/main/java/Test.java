@@ -10,9 +10,8 @@ public class Test {
 
     public static void main(String[] args) {
 
-
-
         SavingProducts.saveProducts(URLParser.getLinks("http://www.coast-stores.com/all-dresses/dept/fcp-category/list"));
         System.out.println("End!");
+
     }
 }
