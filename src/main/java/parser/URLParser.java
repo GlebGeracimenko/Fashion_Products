@@ -3,9 +3,15 @@ package parser;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.parser.Parser;
 import org.jsoup.select.Elements;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,21 +36,33 @@ public class URLParser {
         return links;
     }
 
-    public static void pageParsing(List<String> links) {
-        for (String link : links) {
-            try {
-                System.out.println(link);
-                Document document = Jsoup.connect(link).get();
-                Element title = document.select("h1").first();
-                Element price = document.select(".product-price").first();
-                Element description = document.select(".info").first();
-                Elements allStockSize = document.select(".in-stock, .low-stock");
-                Elements images = document.select("div.product_altImages");
-                System.out.println(images.size());
-            } catch (IOException e) {
-                e.printStackTrace();
+
+    private static String getHTML(String link) {
+        BufferedReader reader = null;
+        StringBuilder builder = null;
+        try {
+            URL url = new URL(link);
+            URLConnection connection = url.openConnection();
+            reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            String s;
+            builder = new StringBuilder();
+            while ((s = reader.readLine()) != null) {
+                builder.append(s + "\n");
+            }
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
+        return builder.toString();
     }
 
 }
