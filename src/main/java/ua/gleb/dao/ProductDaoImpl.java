@@ -1,7 +1,5 @@
 package ua.gleb.dao;
 
-import org.mongodb.morphia.mapping.Mapper;
-import org.mongodb.morphia.query.UpdateOpsImpl;
 import ua.gleb.model.Product;
 import org.mongodb.morphia.Datastore;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +15,17 @@ public class ProductDaoImpl implements IProductDao {
 
     }
 
+    /**
+     * @param product save in database
+     */
     @Override
     public void save(Product product) {
         datastore.save(product);
     }
 
+    /**
+     * @param datastore
+     */
     public void setDatastore(Datastore datastore) {
         this.datastore = datastore;
     }

@@ -19,6 +19,11 @@ import java.util.List;
  */
 public class URLParser {
 
+    /**
+     *
+     * @param url
+     * @return links all products
+     */
     public static List<String> getLinks(String url) {
         List<String> links = null;
         try {
@@ -33,35 +38,6 @@ public class URLParser {
             e.printStackTrace();
         }
         return links;
-    }
-
-
-    private static String getHTML(String link) {
-        BufferedReader reader = null;
-        StringBuilder builder = null;
-        try {
-            URL url = new URL(link);
-            URLConnection connection = url.openConnection();
-            reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            String s;
-            builder = new StringBuilder();
-            while ((s = reader.readLine()) != null) {
-                builder.append(s + "\n");
-            }
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (reader != null) {
-                try {
-                    reader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return builder.toString();
     }
 
 }

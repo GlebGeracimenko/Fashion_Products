@@ -23,6 +23,10 @@ public class SavingProducts {
     private static IProductDao productDao = context.getBean(ProductDaoImpl.class);
     private static int count = 0;
 
+    /**
+     * @param links
+     * parse page and save product in database
+     */
     public static void saveProducts(List<String> links) {
         for (String link : links) {
 
@@ -37,14 +41,26 @@ public class SavingProducts {
             Element description = document.select(".info").first();
             Elements allStockSize = document.select(".in-stock, .low-stock");
             Element image = document.select("a[class = zoom]").first();
-            imagesHelper(image);
-
-            productDao.save(new Product(title.text(), Double.parseDouble(price.text().substring(1, price.text().length())),
+            productDao.save(new Product(title.text(), priceHelper(price),
                     description.text(), sizeHelper(allStockSize), imagesHelper(image)));
             System.out.println(++count);
         }
     }
 
+    /**
+     * @param element
+     * @return price product
+     */
+    private static double priceHelper(Element element) {
+        String s = element.text();
+        s = s.substring(s.indexOf("£") + 1, s.indexOf(".") + 3);
+        return Double.parseDouble(s);
+    }
+
+    /**
+     * @param elements
+     * @return list all size in-stock and low-stock
+     */
     private static List<String> sizeHelper(Elements elements) {
         List<String> list = new ArrayList<String>();
         for (Element element : elements) {
@@ -53,6 +69,10 @@ public class SavingProducts {
         return list;
     }
 
+    /**
+     * @param element
+     * @return list url images product
+     */
     private static List<String> imagesHelper(Element element) {
         List<String> list = new ArrayList<String>();
         String s = element.attr("abs:href");

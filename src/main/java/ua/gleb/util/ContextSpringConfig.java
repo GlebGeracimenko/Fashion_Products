@@ -21,7 +21,7 @@ public class ContextSpringConfig { // ContextSpringConfig
         if (datastore == null) {
             Morphia morphia = new Morphia();
             morphia.map(Product.class);
-            datastore = morphia.createDatastore(new MongoClient(), "Fashion_Products");
+            datastore = morphia.createDatastore(new MongoClient("localhost", 27017), "Fashion_Products");
             datastore.ensureIndexes();
         }
         return datastore;
